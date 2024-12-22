@@ -13,7 +13,6 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 // const analytics = getAnalytics(app);
 
-// Initialize Firebase Authentication
 
 // Create an instance of the Google provider
 const googleProvider = new GoogleAuthProvider();
@@ -34,7 +33,6 @@ if (signInButton) {
             alert('Uw email is al gekoppeld aan een Facebook account. Log in met Facebook.');
           }
           // Handle sign-in errors
-          const errorCode = error.code;
           const errorMessage = error.message;
           console.error(`Sign-in error: ${errorMessage}`);
         });
@@ -52,11 +50,10 @@ if (signInButtonFacebook) {
           // Signed in successfully
         })
         .catch((error) => {
-          if (error.code == 'auth/account-exists-with-different-credential') {
+          if (error.code === 'auth/account-exists-with-different-credential') {
             alert('U email is al gekoppeld aan een Google account. Log in met Google.');
           }
           // Handle sign-in errors
-          const errorCode = error.code;
           const errorMessage = error.message;
           console.error(`Sign-in error: ${errorMessage}`);
         });
